@@ -55,14 +55,16 @@ winner_message = "==============================================================
                  "Congratulations! you guessed the secret number, the winning number was: " + str(random_number)
 
 # list that collects the stats
-stats_list = ["amount of guesses you needed: ", ]
+stats_list = []
 
 # Loop to see if the input matches the random number, it tells if it's too low, too high or correct
 # Also this loop is calculating the amount of tries because if you exceed the limit the game will stop
 while random_number != user_guess:
     count -= 1
+    stats_list.append(user_guess)
     if count == 0:
         print("The amount of guesses is reached, you lost. The secret number was: " + str(random_number))
+        print("Your guesses where: " + str(stats_list))
         break
     if user_guess < random_number:
         print("the guessed number is too low, the amount of guesses left = " + str(count))
@@ -74,3 +76,4 @@ while random_number != user_guess:
                                + str(custom_maximum_number) + "\n"))
     if random_number == user_guess:
         print(str(winner_message) + "\n")
+        print("Your guesses where: " + str(stats_list))
